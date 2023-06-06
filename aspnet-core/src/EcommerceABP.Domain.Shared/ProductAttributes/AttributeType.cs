@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EcommerceABP.Attributes
+namespace EcommerceABP.ProductAttributes
 {
     public enum AttributeType
     {
