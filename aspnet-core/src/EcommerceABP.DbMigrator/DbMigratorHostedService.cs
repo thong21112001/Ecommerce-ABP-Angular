@@ -7,6 +7,7 @@ using EcommerceABP.Data;
 using Serilog;
 using Volo.Abp;
 using Volo.Abp.Data;
+using EcommerceABP.Seeding;
 
 namespace EcommerceABP.DbMigrator;
 
@@ -38,6 +39,12 @@ public class DbMigratorHostedService : IHostedService
                 .GetRequiredService<EcommerceABPDbMigrationService>()
                 .MigrateAsync();
 
+            //Seeding data master les 4.9 // tai khoan admin
+            await application
+                .ServiceProvider
+                .GetRequiredService<IdentityDataSeeder>()
+                .SeedAsync("quangthong211101@gmail.com","Yuki2016@");
+            //End Seeding data master les 4.9
             await application.ShutdownAsync();
 
             _hostApplicationLifetime.StopApplication();
